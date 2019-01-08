@@ -5,11 +5,11 @@ class SettingsPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value1: 0,
-      value2: 0,
-      value3: 0,
-      value4: 0,
-      value5: 0
+      box1: 0,
+      box2: 0,
+      box3: 0,
+      box4: 0,
+      box5: 0
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -17,53 +17,85 @@ class SettingsPage extends Component {
   }
 
   handleChange(event) {
-    this.setState({ value1: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   handleSubmit(event) {
     alert(
       "Connected to: " +
-        this.state.value1 +
+        this.state.box1 +
         "." +
-        this.state.value2 +
+        this.state.box2 +
         "." +
-        this.state.value3 +
+        this.state.box3 +
         "." +
-        this.state.value4 +
+        this.state.box4 +
         ":" +
-        this.state.value5
+        this.state.box5
     );
     event.preventDefault();
   }
 
   render() {
+    console.log(this.state.box1);
+    console.log(this.state.box2);
+
     return (
       <div>
         <h1>Settings</h1>
         <p>
-          Connected To: {this.state.value1}.{this.state.value2}.
-          {this.state.value3}.{this.state.value4}:{this.state.value5}
+          Connected To: {this.state.box1}.{this.state.box2}.{this.state.box3}.
+          {this.state.box4}:{this.state.box5}
         </p>
         <p>
           <input
+            name="box1"
             type="text"
             placeholder="000"
-            //value={this.state.value1}
-            //onChange={this.handleChange}
+            onChange={this.handleChange}
             id="textbox"
             size="6"
           />
           .
-          <input placeholder="00" id="textbox" size="6" />
+          <input
+            name="box2"
+            type="text"
+            placeholder="00"
+            onChange={this.handleChange}
+            id="textbox"
+            size="6"
+          />
           .
-          <input placeholder="000" id="textbox" size="6" />
+          <input
+            name="box3"
+            type="text"
+            placeholder="000"
+            onChange={this.handleChange}
+            id="textbox"
+            size="6"
+          />
           .
-          <input placeholder="00" id="textbox" size="6" />
+          <input
+            name="box4"
+            type="text"
+            placeholder="00"
+            onChange={this.handleChange}
+            id="textbox"
+            size="6"
+          />
           :
-          <input placeholder="0000" id="textbox" size="6" />
+          <input
+            name="box5"
+            type="text"
+            placeholder="0000"
+            onChange={this.handleChange}
+            id="textbox"
+            size="6"
+          />
         </p>
         <p>
-          <button onClick={this.handleChange}>Connect To Interop</button>
+          <button onClick={this.handleSubmit}>Connect To Interop</button>
         </p>
       </div>
     );
